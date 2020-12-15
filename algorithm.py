@@ -1,5 +1,6 @@
 import numpy as np
 from datasets import load_iris_dataset
+from tools import create_plot
 
 class BaseEstimator():
     def __init__(self, k=None):
@@ -74,5 +75,4 @@ class EigenGameEstimator(BaseEstimator):
 
 X = load_iris_dataset()
 eigen_game = EigenGameEstimator()
-V, _ = eigen_game.eigen_game_sequential(X)
-print(V)
+V, conv = eigen_game.eigen_game_sequential(X)
