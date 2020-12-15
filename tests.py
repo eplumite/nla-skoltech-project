@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 import datasets as data
+import tools
 
 class SyntheticGenerator(unittest.TestCase):
 
@@ -20,6 +21,15 @@ class DatasetsLoader(unittest.TestCase):
         X = data.load_iris_dataset()
         self.assertEqual(X.shape, (150,4))
         self.assertTrue(isinstance(X, np.ndarray))
+
+class DatasetsPreprocessing(unittest.TestCase):
+
+    def test_standardization(self):
+        dim = 20
+        X = np.random.random((dim,dim)) 
+        X = tools.preprocess_dataset(X)
+        self.assertAlmostEqual(X.mean(axis=0).sum(), 0.0, 12)
+        self.assertAlmostEqual(X.std(axis=0).sum(), dim, 12)
 
 if __name__ == '__main__':
     unittest.main()
