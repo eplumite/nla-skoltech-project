@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn import datasets
 from scipy.stats import ortho_group
 
 def generate_synthetic(spectrum='linear'):
@@ -12,3 +13,8 @@ def generate_synthetic(spectrum='linear'):
     Lambda = np.diag(d_elems)
     M = v.dot(Lambda).dot(np.linalg.inv(v))
     return M
+
+def load_iris_dataset():
+    iris = datasets.load_iris()
+    X = iris['data']
+    return X
