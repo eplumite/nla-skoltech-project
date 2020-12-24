@@ -19,3 +19,9 @@ def load_iris_dataset():
     X = iris['data']
     return X
 
+def load_digits_dataset():
+    digits = datasets.load_digits()
+    n_samples = len(digits.images)
+    X = digits.images.reshape(n_samples,-1)
+    return X
+

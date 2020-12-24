@@ -22,6 +22,11 @@ class DatasetsLoader(unittest.TestCase):
         self.assertEqual(X.shape, (150,4))
         self.assertTrue(isinstance(X, np.ndarray))
 
+    def test_digits_loader(self):
+        X = data.load_digits_dataset()
+        self.assertEqual(X.shape, (1797, 64))
+        self.assertTrue(isinstance(X, np.ndarray))
+
 class DatasetsPreprocessing(unittest.TestCase):
 
     def test_standardization(self):
