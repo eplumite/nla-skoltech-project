@@ -139,7 +139,8 @@ class OjaEstimator(BaseEstimator):
             #normirating
             for k in range(self.V.shape[1]):
                 self.V[:,k] = self.V[:,k]/np.linalg.norm(self.V[:,k])
-                self._streak[k,t] = self._measure_angular_error(self.V[:,k], V_true[:,k])
+                if self._measure_angular_error(self.V[:,k], V_true[:,k]) < np.pi/8:
+                    self._streak[k,t] = 1
                 self.convergence[k,t] = np.linalg.norm(self.V[:,k] - V_old[:,k])
 
             if V_true is not None:
